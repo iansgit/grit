@@ -62,4 +62,10 @@ tests/
 ## Current state
 
 - `grit init` — implemented and tested
-- Object store, refs, index, commands — stubs only, not yet implemented
+- Object store (`src/objects/mod.rs`) — fully implemented and tested
+  - `ObjectId`, `ObjectKind`, `Object` types with full git object format support
+  - `Store::write` — SHA1 hash, zlib-compress, fan-out path layout
+  - `Store::read` — decompress and parse from fan-out path
+  - Unit tests including known-hash verification against git's SHA1
+  - Integration tests verifying grit↔git round-trips in both directions
+- Refs, index, remaining commands — stubs only, not yet implemented
